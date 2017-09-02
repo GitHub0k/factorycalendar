@@ -29,7 +29,7 @@ public class CalendarControllerTest {
     @Test
     public void getNextWorkingDate() throws Exception {
 
-
+        calendarController.getNextWorkingDate("01.09.2017", "Russia");
 
     }
 

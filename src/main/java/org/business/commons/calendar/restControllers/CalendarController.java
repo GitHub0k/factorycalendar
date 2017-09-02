@@ -27,7 +27,13 @@ public class CalendarController {
     private Map<String,String> holMap;
 
 
-
+    /**
+     * Метод возвращает следующий рабочий день в виде даты
+     * @param inDate Дата в формате dd.mm.yyyyy
+     * @param country Наименование страны
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping("/getNextWorkingDate")
     public String getNextWorkingDate(@RequestParam(value="InDate") String inDate,
                                      @RequestParam(value="Country") String country
@@ -36,6 +42,9 @@ public class CalendarController {
 
         String out = DateFormatUtils.format(DateUtils.addDays(DateUtils.parseDate(inDate, "dd.MM.yyyy"), 1), "dd.MM.yyyy");
         log.info("Next workin day in " + country + " is " + out);
+
+        log.info(holMap.get("Russia"));
+
         return  out;
     }
 
