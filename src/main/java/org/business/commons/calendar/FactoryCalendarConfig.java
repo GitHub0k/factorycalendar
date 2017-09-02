@@ -39,24 +39,6 @@ public class FactoryCalendarConfig {
         return propertySourcesPlaceholderConfigurer;
     }
 
-    @Autowired
-    Environment environment;
-
-     /*@Bean (name = "authMap")
-     public Map<String, String> authMap() {
-        log.info("Получение массива данных для Basic Auth");
-        Map<String, String> resultList = new HashMap<>();
-        resultList = spectrumCommons.splitToMap(environment.getProperty("holidays.map"));
-        log.info("В массиве " + resultList.size() + " элементов.");
-
-       //MapUtils.debugPrint(System.out, "Map'a c парамаи логин/пароль: " , resultList);
-        return resultList;
-
-    }*/
-
-
-
-
 
 
 }
