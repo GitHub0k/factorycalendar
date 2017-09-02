@@ -41,12 +41,18 @@ public class FactCalendarTest {
         assertEquals("09.01.2017", DateFormatUtils.format(nextWorkingDate0101, "dd.MM.yyyy"));
 
 
-        /**
-         * TODO ответ должен быть 02.11.2017
-         */
         Date nextWorkingDateLux = factCalendar.getNextWorkingDate(DateUtils.parseDate("31.10.2017", "dd.MM.yyyy"), "Luxembourg");
         log.info(DateFormatUtils.format(nextWorkingDateLux, "dd.MM.yyyy"));
+        assertEquals("02.11.2017", DateFormatUtils.format(nextWorkingDateLux, "dd.MM.yyyy"));
 
+        Date nextWorkingDateNYRussia = factCalendar.getNextWorkingDate(DateUtils.parseDate("31.12.2016", "dd.MM.yyyy"), "Russia");
+        log.info(DateFormatUtils.format(nextWorkingDateNYRussia, "dd.MM.yyyy"));
+        assertEquals("09.01.2017", DateFormatUtils.format(nextWorkingDateNYRussia, "dd.MM.yyyy"));
+
+
+        Date nextWorkingDate3108 = factCalendar.getNextWorkingDate(DateUtils.parseDate("31.08.2017", "dd.MM.yyyy"), "Russia");
+        log.info(DateFormatUtils.format(nextWorkingDate3108, "dd.MM.yyyy"));
+        assertEquals("01.09.2017", DateFormatUtils.format(nextWorkingDate3108, "dd.MM.yyyy"));
 
 
     }

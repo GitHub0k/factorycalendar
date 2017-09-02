@@ -6,7 +6,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -51,12 +50,14 @@ public class FactCalendar {
 
     /**
      * Метод возвращает следующий рабочий день
-     * @param d
-     * @param country
+     * @param d дата
+     * @param country страна
      * @return
      */
 
     public Date getNextWorkingDate (Date d, String country) {
+
+        d = DateUtils.addDays(d, 1);
 
         while (isHoliday(d, country)) {
             d = DateUtils.addDays(d, 1);
