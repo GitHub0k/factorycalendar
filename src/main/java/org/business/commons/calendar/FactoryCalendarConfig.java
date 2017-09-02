@@ -17,11 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * Created by d.tsaprilov on 26.01.2017.
- */
-
-
 @Configuration
 
 @ComponentScan(basePackages = {"org.business.commons.calendar"})

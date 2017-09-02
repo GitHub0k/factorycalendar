@@ -16,9 +16,6 @@ import java.util.Date;
 import java.util.Map;
 
 
-/**
- * Created by d.tsaprilov on 16.04.2017.
- */
 
 @RestController
 public class CalendarController {

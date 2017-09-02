@@ -3,9 +3,6 @@ package org.business.commons.calendar;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Created by d.tsaprilov on 16.04.2017.
- */
 
 @SpringBootApplication
 /*@ComponentScan
