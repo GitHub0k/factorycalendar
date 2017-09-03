@@ -8,7 +8,7 @@
 
 
 1. Запуск из IDE `mvn spring-boot:run`
-2. Тестовый запросы (GET):
+2. Тестовые запросы (GET):
 - `http://localhost:8080/getNextWorkingDate?InDate=31.12.2016&Country=Russia`
 - `http://localhost:8080/getNextWorkingDate?InDate=07.03.2017&Country=Russia`
 - `http://localhost:8080/getNextWorkingDate?InDate=24.05.2017&Country=Luxembourg`
@@ -30,4 +30,4 @@ The list of countries and dates of holidays is specified in * .properties files.
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 31.12.2016 & Country = Russia`
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 03/07/2017 & Country = Russia`
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 24/05/2017 & Country = Luxembourg`
-3. Assembling to standalone jar the `mvn package`
+3. Assembling to standalone jar -`mvn package`
