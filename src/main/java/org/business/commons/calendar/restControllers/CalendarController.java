@@ -32,7 +32,7 @@ public class CalendarController {
      * Метод возвращает следующий рабочий день в виде даты
      * @param inDate Дата в формате dd.MM.yyyyy
      * @param country Наименование страны
-     * @return
+     * @return Дата следующего рабочего дня
      * @throws ParseException
      */
     @RequestMapping("/getNextWorkingDate")
@@ -45,5 +45,25 @@ public class CalendarController {
         log.info("Next working day in " + country + " is " +   out);
         return   out;
     }
+
+
+    /**
+     * Метод возвращает предыдущий рабочий день в виде даты
+     * @param inDate Дата в формате dd.MM.yyyyy
+     * @param country Наименование страны
+     * @return Дата предыдущего рабочего дня dd.MM.yyyy
+     * @throws ParseException
+     */
+    @RequestMapping("/getPreviousWorkingDate")
+    public String getPreviousWorkingDate(@RequestParam(value="InDate") String inDate,
+                                     @RequestParam(value="Country") String country
+    ) throws ParseException {
+
+
+        String out = DateFormatUtils.format(factCalendar.getPreviousWorkingDate(DateUtils.parseDate(inDate, "dd.MM.yyyy"), country), "dd.MM.yyyy");
+        log.info("Previous working day in " + country + " is " +   out);
+        return   out;
+    }
+
 
 }

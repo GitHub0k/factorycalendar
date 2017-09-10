@@ -39,7 +39,7 @@ public class FactCalendar {
         Calendar c = new GregorianCalendar();
         c.setTime(d);
         if((Calendar.SATURDAY == c.get(c.DAY_OF_WEEK)) || (Calendar.SUNDAY == c.get(c.DAY_OF_WEEK)) || StringUtils.contains(countryHoilidays, DateFormatUtils.format(d, "dd.MM.yy"))) {
-            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " является праздником или выходным днем в " + country);
+            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " является праздником, выходным или предпраздничным выходным днём в " + country);
             return true;
         } else {
             log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " НЕ является праздником или выходным днем в " + country);
@@ -61,6 +61,24 @@ public class FactCalendar {
 
         while (isHoliday(d, country)) {
             d = DateUtils.addDays(d, 1);
+        }
+        return d;
+    }
+
+
+    /**
+     * Метод возвращает предыдущий рабочий день
+     * @param d дата
+     * @param country страна
+     * @return
+     */
+
+    public Date getPreviousWorkingDate (Date d, String country) {
+
+        d = DateUtils.addDays(d, -1);
+
+        while (isHoliday(d, country)) {
+            d = DateUtils.addDays(d, -1);
         }
         return d;
     }

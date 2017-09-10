@@ -1,6 +1,8 @@
 **factorycalendar** - REST-сервис для работы с производственным календарем в заданной стране.
-В текущей версии реализована фцнкциональность получения следующего рабочего дня 2017 года в с учетом празников
-следующих стран:
+В текущей версии реализована фцнкциональность получения
+- даты следующего рабочего дня 2017 года в с учетом празников, выходных и предпраздничных выходных дней
+- даты предыдущего рабочего дня  
+для следующих стран:
 - Russia
 - Luxembourg
 
@@ -12,13 +14,18 @@
 - `http://localhost:8080/getNextWorkingDate?InDate=31.12.2016&Country=Russia`
 - `http://localhost:8080/getNextWorkingDate?InDate=07.03.2017&Country=Russia`
 - `http://localhost:8080/getNextWorkingDate?InDate=24.05.2017&Country=Luxembourg`
+- `http://localhost:8080/getPreviousWorkingDate?InDate=26.05.2017&Country=Luxembourg`
+- `http://localhost:8080/getPreviousWorkingDate?InDate=02.05.2017&Country=Russia`
 3. Сборка `mvn package`
 
 
 **ENGLISH**
 
 **factorycalendar** - REST-service for working with a production calendar in a specified country.
-In the current version, the functionality is set up for holidays in 2017 and for next countries:
+In the current version, the functionality for getting 
+- next and
+- previous working date 
+is set up for holidays in 2017 and for next countries:
 - Russia
 - Luxembourg
 
@@ -30,4 +37,6 @@ The list of countries and dates of holidays is specified in * .properties files.
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 31.12.2016 & Country = Russia`
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 03/07/2017 & Country = Russia`
 - `http: // localhost: 8080 / getNextWorkingDate? InDate = 24/05/2017 & Country = Luxembourg`
+- `http://localhost:8080/getPreviousWorkingDate?InDate=26.05.2017&Country=Luxembourg`
+- `http://localhost:8080/getPreviousWorkingDate?InDate=02.05.2017&Country=Russia`
 3. Assembling to standalone jar -`mvn package`

@@ -29,7 +29,16 @@ public class CalendarControllerTest {
     @Test
     public void getNextWorkingDate() throws Exception {
 
-        calendarController.getNextWorkingDate("01.09.2017", "Russia");
+        String nextWorkingDateInRussia = calendarController.getNextWorkingDate("01.09.2017", "Russia");
+        assertEquals("04.09.2017", nextWorkingDateInRussia);
+
+        String prevWorkingDateInRussia = calendarController.getPreviousWorkingDate("12.06.2017", "Russia");
+        assertEquals("09.06.2017", prevWorkingDateInRussia);
+
+
+        String prevWorkingDateInLux = calendarController.getPreviousWorkingDate("26.05.2017", "Luxembourg");
+        assertEquals("24.05.2017", prevWorkingDateInLux);
+
 
     }
 

@@ -66,4 +66,26 @@ public class FactCalendarTest {
         assertTrue(factCalendar.isHoliday(DateUtils.parseDate("12.06.2017", "dd.MM.yyyy"), "Russia"));
     }
 
+
+
+
+    @Test
+    public void getPreviousWorkingDate() throws Exception {
+        Date nextPreviousDate = factCalendar.getPreviousWorkingDate(DateUtils.parseDate("10.09.2017", "dd.MM.yyyy"), "Russia");
+        log.info(DateFormatUtils.format(nextPreviousDate, "dd.MM.yyyy"));
+        assertEquals("08.09.2017", DateFormatUtils.format(nextPreviousDate, "dd.MM.yyyy"));
+
+        Date nextPreviousDateNY = factCalendar.getPreviousWorkingDate(DateUtils.parseDate("08.01.2017", "dd.MM.yyyy"), "Russia");
+        log.info(DateFormatUtils.format(nextPreviousDateNY, "dd.MM.yyyy"));
+        assertEquals("30.12.2016", DateFormatUtils.format(nextPreviousDateNY, "dd.MM.yyyy"));
+
+
+        Date nextPreviousDateMAY = factCalendar.getPreviousWorkingDate(DateUtils.parseDate("09.05.2017", "dd.MM.yyyy"), "Russia");
+        log.info(DateFormatUtils.format(nextPreviousDateMAY, "dd.MM.yyyy"));
+        assertEquals("05.05.2017", DateFormatUtils.format(nextPreviousDateMAY, "dd.MM.yyyy"));
+
+
+
+    }
+
 }
