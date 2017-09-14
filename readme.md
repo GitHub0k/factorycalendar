@@ -1,7 +1,8 @@
 **factorycalendar** - REST-сервис для работы с производственным календарем в заданной стране.
 В текущей версии реализована функциональность получения
 - даты следующего рабочего дня 2017 года в с учетом праздников, выходных и предпраздничных выходных дней
-- даты предыдущего рабочего дня  
+- даты предыдущего рабочего дня
+- признака является ли дата рабочим днём 
 для следующих стран:
 - Russia
 - Luxembourg
@@ -16,6 +17,7 @@
 - `http://localhost:8080/getNextWorkingDate?InDate=24.05.2017&Country=Luxembourg`
 - `http://localhost:8080/getPreviousWorkingDate?InDate=26.05.2017&Country=Luxembourg`
 - `http://localhost:8080/getPreviousWorkingDate?InDate=02.05.2017&Country=Russia`
+- `http://localhost:8080/isDateWorkingDay?InDate=09.05.2017&Country=Russia`
 3. Сборка `mvn package`
 
 
@@ -24,7 +26,8 @@
 **factorycalendar** - REST-service for working with a production calendar in a specified country.
 In the current version, the functionality for getting 
 - next and
-- previous working date 
+- previous working date
+- is date a working date in the Country
 is set up for holidays in 2017 and for next countries:
 - Russia
 - Luxembourg
@@ -34,9 +37,10 @@ The list of countries and dates of holidays is specified in * .properties files.
 
 1. Running from the IDE `mvn spring-boot: run`
 2. Test Requests (GET):
-- `http: // localhost: 8080 / getNextWorkingDate? InDate = 31.12.2016 & Country = Russia`
-- `http: // localhost: 8080 / getNextWorkingDate? InDate = 03/07/2017 & Country = Russia`
-- `http: // localhost: 8080 / getNextWorkingDate? InDate = 24/05/2017 & Country = Luxembourg`
+- `http://localhost:8080/getNextWorkingDate?InDate=31.12.2016&Country=Russia`
+- `http://localhost:8080/getNextWorkingDate?InDate=03/07/2017&Country=Russia`
+- `http://localhost:8080/getNextWorkingDate?InDate=24/05/2017&Country=Luxembourg`
 - `http://localhost:8080/getPreviousWorkingDate?InDate=26.05.2017&Country=Luxembourg`
 - `http://localhost:8080/getPreviousWorkingDate?InDate=02.05.2017&Country=Russia`
+- `http://localhost:8080/isDateWorkingDay?InDate=09.05.2017&Country=Russia`
 3. Assembling to standalone jar -`mvn package`

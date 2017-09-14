@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = FactoryCalendarConfig.class)
 public class CalendarControllerTest {
 
+
     private static final Logger log = LoggerFactory.getLogger(CalendarControllerTest.class);
 
     @Autowired
@@ -38,6 +39,25 @@ public class CalendarControllerTest {
 
         String prevWorkingDateInLux = calendarController.getPreviousWorkingDate("26.05.2017", "Luxembourg");
         assertEquals("24.05.2017", prevWorkingDateInLux);
+
+
+    }
+
+
+    @Test
+    public void isDateWorkingDay() throws Exception {
+
+        boolean workingDay = calendarController.isDateWorkingDay("16.09.2017", "Luxembourg");
+        assertFalse(workingDay);
+
+
+        boolean workingDay1 = calendarController.isDateWorkingDay("09.05.2017", "Russia");
+        assertFalse(workingDay1);
+
+
+        boolean workingDay2 = calendarController.isDateWorkingDay("14.09.2017", "Russia");
+        assertTrue(workingDay2);
+
 
 
     }

@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.Map;
 
 
@@ -64,6 +62,31 @@ public class CalendarController {
         log.info("Previous working day in " + country + " is " +   out);
         return   out;
     }
+
+
+    /**
+     * Метод возвращает true если переданная дата в указанной стране являетс рабочим днём и false, если дата является выходным или праздничным днем.
+     * @param inDate Дата в формате dd.MM.yyyyy
+     * @param country Наименование страны
+     * @return true/false
+     * @throws ParseException
+     */
+    @RequestMapping("/isDateWorkingDay")
+    public boolean isDateWorkingDay(@RequestParam(value="InDate") String inDate,
+                                    @RequestParam(value="Country") String country
+    ) throws ParseException {
+
+       boolean isHoliday = factCalendar.isHoliday(DateUtils.parseDate(inDate, "dd.MM.yyyy"), country);
+       log.info(inDate + " is holiday in " + country + ": " + isHoliday);
+
+        if (isHoliday == true) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 
 
 }
