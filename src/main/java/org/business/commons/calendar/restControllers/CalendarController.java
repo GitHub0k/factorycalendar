@@ -88,6 +88,16 @@ public class CalendarController {
     }
 
 
+    /**
+     * Method returns the number of working days between two dates (begin and ens dates are inclusive)
+     * @param beginDate, dd.MM.yyyyy
+     * @param endDate, dd.MM.yyyyy
+     * @param country e.g. Russia
+     * @return int, number of days
+     * @throws ParseException
+     */
+
+
     @RequestMapping("/getWorkingDaysBetweenDates")
     public int getWorkingDaysBetweenDates(@RequestParam(value="BeginDate") String beginDate,
                                               @RequestParam(value="EndDate") String endDate,

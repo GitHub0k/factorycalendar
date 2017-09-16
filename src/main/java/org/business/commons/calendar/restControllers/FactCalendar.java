@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,11 +33,11 @@ public class FactCalendar {
     private Map<String, String> holMap;
 
     /**
-     * Является ли дата празником в стране
+     * Is date a holiday in the specified country
      *
-     * @param d       дата
-     * @param country страна
-     * @return
+     * @param d date
+     * @param country country
+     * @return true/false
      */
     public boolean isHoliday(Date d, String country) {
 
@@ -46,10 +47,10 @@ public class FactCalendar {
         Calendar c = new GregorianCalendar();
         c.setTime(d);
         if ((Calendar.SATURDAY == c.get(c.DAY_OF_WEEK)) || (Calendar.SUNDAY == c.get(c.DAY_OF_WEEK)) || StringUtils.contains(countryHoilidays, DateFormatUtils.format(d, "dd.MM.yy"))) {
-            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " является праздником, выходным или предпраздничным выходным днём в " + country);
+            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " is a holiday, a weekend or a pre-holiday day in " + country);
             return true;
         } else {
-            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " НЕ является праздником или выходным днем в " + country);
+            log.info(DateFormatUtils.format(d, "dd.MM.yyyy") + " is NOT a holiday, a weekend or a pre-holiday day in " + country);
             return false;
         }
     }
@@ -94,22 +95,35 @@ public class FactCalendar {
 
 
     /**
-     * Returns the number of working days between two dates
+     * Returns the number of working days between two dates (inclusive begin and end dates)
      *
-     * @param beginDate begin Date
-     * @param endDate   end Date
+     * @param beginDate begin Date, dd.MM.yyyyy
+     * @param endDate   end Date, dd.MM.yyyyy
      * @return
      */
-    public int getWorkingDaysBetweenDates(String beginDate, String endDate, String country) {
+    public int getWorkingDaysBetweenDates(String beginDate, String endDate, String country) throws ParseException {
 
-          return 0;
+        List<Date> workingDates = new ArrayList<>();
+
+        List<Date> datesBetweenInclusive = getDatesBetweenInclusive(DateUtils.parseDate(beginDate, "dd.MM.yyyy"), DateUtils.parseDate(endDate, "dd.MM.yyyy"));
+
+        for (Date dt:datesBetweenInclusive) {
+            boolean holiday = isHoliday(dt, country);
+            if (holiday == false) {
+                log.info("Add " + DateFormatUtils.format(dt, "dd.MM.yyyy") + " as working date to out array.");
+                workingDates.add(dt);
+            }
+
+        }
+
+          return workingDates.size();
     }
 
 
-    /**Method returns date array between two dates
+    /**Method returns date array between two dates inclusive begin date and end date
      * @param beginDate
      * @param endDate
-     * @return
+     * @return The massive of dates
      */
     public List<Date> getDatesBetweenInclusive(
             Date beginDate, Date endDate) {

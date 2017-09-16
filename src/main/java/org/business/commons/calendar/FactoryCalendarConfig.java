@@ -20,7 +20,7 @@ import java.util.Map;
 @Configuration
 
 @ComponentScan(basePackages = {"org.business.commons.calendar"})
-@PropertySource("classpath:factorycalendar-dev.properties")
+@PropertySource("classpath:factorycalendar-${env}.properties")
 public class FactoryCalendarConfig {
 
     private static final Logger log = LoggerFactory.getLogger(FactoryCalendarConfig.class);

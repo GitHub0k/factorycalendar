@@ -25,7 +25,6 @@ import static org.junit.Assert.*;
 public class FactCalendarTest {
 
 
-
     private static final Logger log = LoggerFactory.getLogger(FactCalendarTest.class);
 
     @Autowired
@@ -97,8 +96,24 @@ public class FactCalendarTest {
             log.info(DateFormatUtils.format(datesBetween.get(i), "dd.MM.yyyy"));
 
         }
+    }
+
+
+
+    @Test
+    public void getWorkingDaysBetweenDates() throws Exception {
+        int workingDaysBetweenDates = factCalendar.getWorkingDaysBetweenDates("28.04.2017", "02.05.2017", "Russia");
+        log.info(String.valueOf(workingDaysBetweenDates));
+        assertEquals(2, workingDaysBetweenDates);
+
+        int workingDaysBetweenWeelendDates = factCalendar.getWorkingDaysBetweenDates("16.09.2017", "17.09.2017", "Russia");
+        assertEquals(0, workingDaysBetweenWeelendDates);
+
+        int workingDaysBetweenNyDates = factCalendar.getWorkingDaysBetweenDates("01.01.2017", "5.01.2017", "Russia");
+        assertEquals(0, workingDaysBetweenNyDates);
 
 
     }
+
 
 }
