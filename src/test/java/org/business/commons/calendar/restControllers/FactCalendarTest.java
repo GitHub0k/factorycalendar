@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -22,6 +23,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = FactoryCalendarConfig.class)
 public class FactCalendarTest {
+
 
 
     private static final Logger log = LoggerFactory.getLogger(FactCalendarTest.class);
@@ -84,6 +86,17 @@ public class FactCalendarTest {
         log.info(DateFormatUtils.format(nextPreviousDateMAY, "dd.MM.yyyy"));
         assertEquals("05.05.2017", DateFormatUtils.format(nextPreviousDateMAY, "dd.MM.yyyy"));
 
+    }
+
+
+    @Test
+    public void getDatesBetween() throws Exception {
+        List<Date> datesBetween = factCalendar.getDatesBetweenInclusive(DateUtils.addDays(new Date(), -5), new Date());
+
+        for (int i = 0; i < datesBetween.size(); i++) {
+            log.info(DateFormatUtils.format(datesBetween.get(i), "dd.MM.yyyy"));
+
+        }
 
 
     }

@@ -88,5 +88,19 @@ public class CalendarController {
     }
 
 
+    @RequestMapping("/getWorkingDaysBetweenDates")
+    public int getWorkingDaysBetweenDates(@RequestParam(value="BeginDate") String beginDate,
+                                              @RequestParam(value="EndDate") String endDate,
+                                              @RequestParam(value="Country") String country
+    ) throws ParseException {
+
+
+        int workingDaysBetweenDates = factCalendar.getWorkingDaysBetweenDates(beginDate, endDate, country);
+        log.info("Between " + beginDate + " and " +endDate+  " the number of working day is  " + workingDaysBetweenDates);
+
+        return workingDaysBetweenDates;
+
+    }
+
 
 }
