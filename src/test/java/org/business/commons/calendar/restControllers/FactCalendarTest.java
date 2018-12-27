@@ -2,14 +2,14 @@ package org.business.commons.calendar.restControllers;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.business.commons.calendar.FactoryCalendarConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
@@ -20,8 +20,10 @@ import static org.junit.Assert.*;
  * Created by User on 9/2/2017.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = FactoryCalendarConfig.class)
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@ActiveProfiles("dev")
 public class FactCalendarTest {
 
 
@@ -112,8 +114,14 @@ public class FactCalendarTest {
         int workingDaysBetweenNyDates = factCalendar.getWorkingDaysBetweenDates("01.01.2017", "5.01.2017", "Russia");
         assertEquals(0, workingDaysBetweenNyDates);
 
-
     }
+
+
+    @Test
+    public void simplUnitTest() {
+        log.info("Ололо!");
+    }
+
 
 
 }
